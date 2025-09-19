@@ -17,17 +17,21 @@ import io.titandata.remote.RemoteOperationType
 class NopRemoteServerTest : StringSpec() {
     private val client = NopRemoteServer()
 
-    private val op = RemoteOperation(
+    private val op =
+        RemoteOperation(
             operationId = "op",
             commitId = "commit",
             commit = null,
             remote = emptyMap(),
             parameters = emptyMap(),
             type = RemoteOperationType.PUSH,
-            updateProgress = { _, _, _ -> }
-    )
+            updateProgress = { _, _, _ -> },
+        )
 
-    override fun afterTest(testCase: TestCase, result: TestResult) {
+    override fun afterTest(
+        testCase: TestCase,
+        result: TestResult,
+    ) {
         clearAllMocks()
     }
 

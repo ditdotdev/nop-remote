@@ -12,7 +12,10 @@ class NopRemoteClient : RemoteClient {
         return "nop"
     }
 
-    override fun parseUri(uri: URI, additionalProperties: Map<String, String>): Map<String, Any> {
+    override fun parseUri(
+        uri: URI,
+        additionalProperties: Map<String, String>,
+    ): Map<String, Any> {
         if (uri.scheme != null && (uri.authority != null || uri.path != null)) {
             throw IllegalArgumentException("Malformed remote identifier")
         }

@@ -49,14 +49,22 @@ class NopRemoteServer : RemoteServer {
     /**
      * The nop provider always returns success for any commit, and returns an empty set of properties.
      */
-    override fun getCommit(remote: Map<String, Any>, parameters: Map<String, Any>, commitId: String): Map<String, Any>? {
+    override fun getCommit(
+        remote: Map<String, Any>,
+        parameters: Map<String, Any>,
+        commitId: String,
+    ): Map<String, Any>? {
         return emptyMap()
     }
 
     /**
      * The nop provider always returns an empty list of commits.
      */
-    override fun listCommits(remote: Map<String, Any>, parameters: Map<String, Any>, tags: List<Pair<String, String?>>): List<Pair<String, Map<String, Any>>> {
+    override fun listCommits(
+        remote: Map<String, Any>,
+        parameters: Map<String, Any>,
+        tags: List<Pair<String, String?>>,
+    ): List<Pair<String, Map<String, Any>>> {
         return emptyList()
     }
 
@@ -74,15 +82,30 @@ class NopRemoteServer : RemoteServer {
         }
     }
 
-    override fun syncDataEnd(operation: RemoteOperation, operationData: Any?, isSuccessful: Boolean) {
+    override fun syncDataEnd(
+        operation: RemoteOperation,
+        operationData: Any?,
+        isSuccessful: Boolean,
+    ) {
         // Nothing to do
     }
 
-    override fun syncDataVolume(operation: RemoteOperation, operationData: Any?, volumeName: String, volumeDescription: String, volumePath: String, scratchPath: String) {
+    override fun syncDataVolume(
+        operation: RemoteOperation,
+        operationData: Any?,
+        volumeName: String,
+        volumeDescription: String,
+        volumePath: String,
+        scratchPath: String,
+    ) {
         // Nothing to do
     }
 
-    override fun pushMetadata(operation: RemoteOperation, commit: Map<String, Any>, isUpdate: Boolean) {
+    override fun pushMetadata(
+        operation: RemoteOperation,
+        commit: Map<String, Any>,
+        isUpdate: Boolean,
+    ) {
         // Nothing to do
     }
 }
