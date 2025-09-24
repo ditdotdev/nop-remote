@@ -1,5 +1,7 @@
 # Titan Nop (No Operation) Provider
 
+<!-- Test comment to verify updated GitHub Actions workflow - September 24, 2025 -->
+
 This is a very simpler Titan remote provider designed for automated testing.
 It's designed such that all pushes and pulls succeed. The only configuration it
 supports is a `delay` parameter that can be used to inject a delay in all
