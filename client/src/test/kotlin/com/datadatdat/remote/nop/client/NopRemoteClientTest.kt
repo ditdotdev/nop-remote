@@ -1,8 +1,8 @@
 /*
- * Copyright The Titan Project Contributors.
+ * Copyright Datadatdat.
  */
 
-package io.titandata.remote.nop.client
+package com.datadatdat.remote.nop.client
 
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldThrow
