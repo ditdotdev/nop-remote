@@ -1,10 +1,10 @@
 /*
- * Copyright The Titan Project Contributors.
+ * Copyright Datadatdat.
  */
 
-package io.titandata.remote.nop.client
+package com.datadatdat.remote.nop.client
 
-import io.titandata.remote.RemoteClient
+import com.datadatdat.remote.RemoteClient
 import java.net.URI
 
 class NopRemoteClient : RemoteClient {

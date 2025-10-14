@@ -1,8 +1,8 @@
 /*
- * Copyright The Titan Project Contributors.
+ * Copyright Datadatdat.
  */
 
-package io.titandata.remote.nop.server
+package com.datadatdat.remote.nop.server
 
 import io.kotlintest.TestCase
 import io.kotlintest.TestResult
@@ -11,8 +11,8 @@ import io.kotlintest.shouldNotBe
 import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.clearAllMocks
-import io.titandata.remote.RemoteOperation
-import io.titandata.remote.RemoteOperationType
+import com.datadatdat.remote.RemoteOperation
+import com.datadatdat.remote.RemoteOperationType
 
 class NopRemoteServerTest : StringSpec() {
     private val client = NopRemoteServer()

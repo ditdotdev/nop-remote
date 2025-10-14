@@ -1,11 +1,11 @@
 /*
- * Copyright The Titan Project Contributors.
+ * Copyright Datadatdat.
  */
 
-package io.titandata.remote.nop.server
+package com.datadatdat.remote.nop.server
 
-import io.titandata.remote.RemoteOperation
-import io.titandata.remote.RemoteServer
+import com.datadatdat.remote.RemoteOperation
+import com.datadatdat.remote.RemoteServer
 
 /**
  * The nop (No-operation) is a special provider used for internal testing to make it easier to
