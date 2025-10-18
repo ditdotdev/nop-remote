@@ -58,7 +58,7 @@ subprojects {
     }
 
     // Enable ktlint checks and formatting
-    tasks.register<JavaExec>("ktlint") {
+    val ktlintTask = tasks.register<JavaExec>("ktlint") {
         group = LifecycleBasePlugin.VERIFICATION_GROUP
         description = "Check Kotlin code style"
         classpath = ktlint
@@ -72,5 +72,10 @@ subprojects {
         classpath = ktlint
         mainClass.set("com.pinterest.ktlint.Main")
         args("-F", "src/**/*.kt")
+    }
+
+    // Run ktlint as part of the check task (if it exists)
+    afterEvaluate {
+        tasks.findByName("check")?.dependsOn(ktlintTask)
     }
 }
