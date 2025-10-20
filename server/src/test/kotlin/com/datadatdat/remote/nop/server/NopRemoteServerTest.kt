@@ -4,6 +4,8 @@
 
 package com.datadatdat.remote.nop.server
 
+import com.datadatdat.remote.RemoteOperation
+import com.datadatdat.remote.RemoteOperationType
 import io.kotlintest.TestCase
 import io.kotlintest.TestResult
 import io.kotlintest.shouldBe
@@ -11,8 +13,6 @@ import io.kotlintest.shouldNotBe
 import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.clearAllMocks
-import com.datadatdat.remote.RemoteOperation
-import com.datadatdat.remote.RemoteOperationType
 
 class NopRemoteServerTest : StringSpec() {
     private val client = NopRemoteServer()
