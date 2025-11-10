@@ -29,24 +29,13 @@ class NopRemoteServer : RemoteServer {
     }
 
     /**
-     * The only nop parameter supported is "delay". But since that is passed as an integer, we need to conver it
-     * from a double (default number type).
+     * Validate parameters, which are all optional (delay).
      */
-    override fun validateParameters(parameters: Map<String, Any>): Map<String, Any> {
-        for (prop in parameters.keys) {
-            if (prop != "delay") {
-                throw java.lang.IllegalArgumentException("invalid nop remote parameter '$prop'")
-            }
-        }
-
-        return if (parameters.containsKey("delay")) {
-            mapOf("delay" to (parameters["delay"] as Double).toInt())
-        } else {
-            emptyMap()
-        }
-    }
-
-    /**
+    override fun validateParameters(parameters: Map<String, Any>?): Map<String, Any> {
+        val params = parameters ?: emptyMap()
+        util.validateFields(params, emptyList(), listOf("delay"))
+        return params
+    }    /**
      * The nop provider always returns success for any commit, and returns an empty set of properties.
      */
     override fun getCommit(
