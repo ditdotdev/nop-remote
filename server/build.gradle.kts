@@ -10,7 +10,6 @@ plugins {
 
 }
 repositories {
-    mavenLocal()
     mavenCentral()
     maven("https://dl.bintray.com/kotlin/kotlinx")
     maven {
@@ -21,7 +20,7 @@ repositories {
 
 dependencies {
 	implementation(kotlin("stdlib"))
-	implementation("com.datadatdat:remote-sdk:1.1.0")
+	implementation("com.datadatdat:remote-sdk:1.3.0")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 	testImplementation("io.mockk:mockk:1.14.6")
 }
