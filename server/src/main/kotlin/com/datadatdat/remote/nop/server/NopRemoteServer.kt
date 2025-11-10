@@ -6,6 +6,7 @@ package com.datadatdat.remote.nop.server
 
 import com.datadatdat.remote.RemoteOperation
 import com.datadatdat.remote.RemoteServer
+import com.datadatdat.remote.RemoteServerUtil
 
 /**
  * The nop (No-operation) is a special provider used for internal testing to make it easier to
@@ -14,6 +15,8 @@ import com.datadatdat.remote.RemoteServer
  * remotes will always return an empty list.
  */
 class NopRemoteServer : RemoteServer {
+    internal val util = RemoteServerUtil()
+
     override fun getProvider(): String {
         return "nop"
     }
@@ -29,21 +32,21 @@ class NopRemoteServer : RemoteServer {
     }
 
     /**
-     * The only nop parameter supported is "delay". But since that is passed as an integer, we need to conver it
-     * from a double (default number type).
+     * Validate parameters, which are all optional (delay).
      */
-    override fun validateParameters(parameters: Map<String, Any>): Map<String, Any> {
-        for (prop in parameters.keys) {
-            if (prop != "delay") {
-                throw java.lang.IllegalArgumentException("invalid nop remote parameter '$prop'")
+    override fun validateParameters(parameters: Map<String, Any>?): Map<String, Any> {
+        val params = parameters ?: emptyMap()
+        util.validateFields(params, emptyList(), listOf("delay"))
+
+        // Convert delay from double to integer if present
+        val result = params.toMutableMap()
+        if (result.containsKey("delay")) {
+            val delay = result["delay"]
+            if (delay is Double) {
+                result["delay"] = delay.toInt()
             }
         }
-
-        return if (parameters.containsKey("delay")) {
-            mapOf("delay" to (parameters["delay"] as Double).toInt())
-        } else {
-            emptyMap()
-        }
+        return result
     }
 
     /**
