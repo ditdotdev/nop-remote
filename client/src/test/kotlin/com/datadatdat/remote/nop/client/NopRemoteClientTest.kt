@@ -28,6 +28,12 @@ class NopRemoteClientTest : StringSpec() {
             }
         }
 
+        "parsing nop URI with path fails" {
+            shouldThrow<IllegalArgumentException> {
+                client.parseUri(URI("nop:/path"), emptyMap())
+            }
+        }
+
         "converting to nop remote succeeds" {
             val (result, properties) = client.toUri(emptyMap())
             result shouldBe "nop"
