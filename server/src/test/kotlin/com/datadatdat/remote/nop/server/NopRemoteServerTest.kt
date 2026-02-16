@@ -48,6 +48,11 @@ class NopRemoteServerTest : StringSpec() {
             }
         }
 
+        "validate null parameters succeeds" {
+            val result = client.validateParameters(null)
+            result.size shouldBe 0
+        }
+
         "validate empty parameters succeeds" {
             val result = client.validateParameters(emptyMap())
             result.size shouldBe 0
@@ -89,6 +94,37 @@ class NopRemoteServerTest : StringSpec() {
 
         "sync data start succeeds" {
             client.syncDataStart(op)
+        }
+
+        "sync data start with delay zero skips sleep" {
+            val opWithDelay =
+                RemoteOperation(
+                    operationId = "op",
+                    commitId = "commit",
+                    commit = null,
+                    remote = emptyMap(),
+                    parameters = mapOf("delay" to 0),
+                    type = RemoteOperationType.PUSH,
+                    updateProgress = { _, _, _ -> },
+                )
+            client.syncDataStart(opWithDelay)
+        }
+
+        "sync data start with delay sleeps" {
+            val opWithDelay =
+                RemoteOperation(
+                    operationId = "op",
+                    commitId = "commit",
+                    commit = null,
+                    remote = emptyMap(),
+                    parameters = mapOf("delay" to 1),
+                    type = RemoteOperationType.PUSH,
+                    updateProgress = { _, _, _ -> },
+                )
+            val start = System.currentTimeMillis()
+            client.syncDataStart(opWithDelay)
+            val elapsed = System.currentTimeMillis() - start
+            (elapsed >= 900) shouldBe true
         }
 
         "push metadata does nothing" {
