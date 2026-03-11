@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("com.datadatdat:remote-sdk:1.7.0")
+    implementation("com.datadatdat:remote-sdk:1.7.1")
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 }
 
