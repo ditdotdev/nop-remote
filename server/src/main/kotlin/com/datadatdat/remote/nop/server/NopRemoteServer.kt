@@ -26,7 +26,7 @@ class NopRemoteServer : RemoteServer {
      */
     override fun validateRemote(remote: Map<String, Any>): Map<String, Any> {
         if (remote.size != 0) {
-            throw IllegalArgumentException("invalid nop remote property '${remote.keys.first()}")
+            throw IllegalArgumentException("invalid nop remote property '${remote.keys.first()}'")
         }
         return remote
     }

@@ -63,6 +63,15 @@ class NopRemoteServerTest : StringSpec() {
             result["delay"] shouldBe 12
         }
 
+        "validate delay as integer is preserved" {
+            val result = client.validateParameters(mapOf("delay" to 12))
+            result["delay"] shouldBe 12
+        }
+
+        "util is exposed for internal use" {
+            client.util shouldNotBe null
+        }
+
         "validate unknown properties fails" {
             shouldThrow<IllegalArgumentException> {
                 client.validateParameters(mapOf("a" to "b"))
