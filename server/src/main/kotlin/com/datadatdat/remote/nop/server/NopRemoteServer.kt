@@ -1,12 +1,12 @@
 /*
- * Copyright Datadatdat.
+ * Copyright Dit.
  */
 
-package com.datadatdat.remote.nop.server
+package dev.dit.remote.nop.server
 
-import com.datadatdat.remote.RemoteOperation
-import com.datadatdat.remote.RemoteServer
-import com.datadatdat.remote.RemoteServerUtil
+import dev.dit.remote.RemoteOperation
+import dev.dit.remote.RemoteServer
+import dev.dit.remote.RemoteServerUtil
 
 /**
  * The nop (No-operation) is a special provider used for internal testing to make it easier to

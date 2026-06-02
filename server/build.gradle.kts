@@ -1,5 +1,5 @@
 /*
- * Copyright Datadatdat.
+ * Copyright Dit.
  */
 
 plugins {
@@ -13,20 +13,20 @@ repositories {
     mavenCentral()
     maven("https://dl.bintray.com/kotlin/kotlinx")
     maven {
-        name = "datadatdat"
-        url = uri("https://datadatdat-maven.s3.amazonaws.com")
+        name = "dit"
+        url = uri("https://dit-maven.s3.amazonaws.com")
     }
 }
 
 dependencies {
 	implementation(kotlin("stdlib"))
-	implementation("com.datadatdat:remote-sdk:1.9.2")
+	implementation("dev.dit:remote-sdk:1.9.3")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 	testImplementation("io.mockk:mockk:1.14.11")
 }
 
 // Jar configuration
-group = "com.datadatdat"
+group = "dev.dit"
 version = when(project.hasProperty("version")) {
     true -> project.property("version")!!
     false -> "latest"
@@ -44,13 +44,13 @@ val jar by tasks.getting(Jar::class) {
 // Maven publishing configuration
 val mavenBucket = when(project.hasProperty("mavenBucket")) {
     true -> project.property("mavenBucket")
-    false -> "datadatdat-maven"
+    false -> "dit-maven"
 }
 
 publishing {
 	publications {
 		create<MavenPublication>("maven") {
-			groupId = "com.datadatdat"
+			groupId = "dev.dit"
 			artifactId = "nop-remote-server"
 
 			from(components["java"])
@@ -59,7 +59,7 @@ publishing {
 
     repositories {
         maven {
-            name = "datadatdat"
+            name = "dit"
             url = uri("s3://$mavenBucket")
             authentication {
                 create<AwsImAuthentication>("awsIm")
