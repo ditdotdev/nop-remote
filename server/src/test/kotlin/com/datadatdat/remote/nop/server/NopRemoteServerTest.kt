@@ -1,11 +1,11 @@
 /*
- * Copyright Datadatdat.
+ * Copyright Dit.
  */
 
-package com.datadatdat.remote.nop.server
+package dev.dit.remote.nop.server
 
-import com.datadatdat.remote.RemoteOperation
-import com.datadatdat.remote.RemoteOperationType
+import dev.dit.remote.RemoteOperation
+import dev.dit.remote.RemoteOperationType
 import io.kotlintest.TestCase
 import io.kotlintest.TestResult
 import io.kotlintest.shouldBe
