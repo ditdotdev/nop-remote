@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
 	implementation(kotlin("stdlib"))
-	implementation("dev.dit:remote-sdk:1.10.0")
+	implementation("dev.dit:remote-sdk:1.10.1")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 	testImplementation("io.mockk:mockk:1.14.11")
 }
